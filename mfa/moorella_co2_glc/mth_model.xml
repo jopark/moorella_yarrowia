@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fluxml xmlns="http://www.13cflux.net/fluxml">
+<info>
+	<name>Moorella_Simple2_13C</name>
+	<version>1.0</version>
+	<comment/>
+</info>
+<reactionnetwork>
+	<metabolitepools>
+		<pool C="1" id="CO2_IN"/> <!-- atoms is C by defult; add symm!! -->
+		<pool C="3" id="pg3_IN"/>
+		<pool C="3" id="pg3"/>
+		<pool C="3" id="pep"/>
+		<pool C="3" id="pyr"/>
+		<pool C="2" id="accoa"/>
+		<pool C="1" id="fthf"/>
+		<pool C="1" id="mlthf"/>
+		<pool C="1" id="mthf"/>
+		<pool C="1" id="mlp"/>
+		<pool C="1" id="mcfesp"/>
+		<pool C="4" id="oa"/>
+		<pool C="6" id="cit"/>
+		<pool C="5" id="akg"/>
+		<pool C="4" id="succoa"/>
+		<pool C="1" id="CO2"/>
+		<pool C="3" id="ser"/>
+		<pool C="2" id="gly"/>
+	</metabolitepools>
+	<reaction id="CO2_IN">
+		<reduct cfg="A" id="CO2_IN"/>
+		<rproduct cfg="A" id="CO2"/>
+	</reaction>
+	<reaction id="PG3_IN">
+		<reduct cfg="ABC" id="pg3_IN"/>
+		<rproduct cfg="ABC" id="pg3"/>
+	</reaction>
+	<reaction id="PGM_ENO">
+		<reduct cfg="ABC" id="pg3"/>
+		<rproduct cfg="ABC" id="pep"/>
+	</reaction>
+	<reaction id="PYK" equiv="abh">
+		<reduct cfg="ABC" id="pep"/>
+		<rproduct cfg="ABC" id="pyr"/>
+	</reaction>
+	<reaction id="PPC">
+		<reduct cfg="ABC" id="pep"/>
+		<reduct cfg="D" id="CO2"/>
+		<rproduct cfg="ABCD" id="oa"/>
+	</reaction>
+	<reaction id="PC"> <!-- FIX PARTIAL DUPLICATE EQUIV -->
+		<reduct cfg="ABC" id="pyr"/>
+		<reduct cfg="D" id="CO2"/>
+		<rproduct cfg="ABCD" id="oa"/>
+	</reaction>
+	<reaction id="PFOR">
+		<reduct cfg="ABC" id="pyr"/>
+		<rproduct cfg="BC" id="accoa"/>
+		<rproduct cfg="A" id="CO2"/>
+	</reaction>
+	<reaction id="CS">
+		<reduct cfg="ABCD" id="oa"/>
+		<reduct cfg="EF" id="accoa"/>
+		<rproduct cfg="DCBAFE" id="cit"/>
+	</reaction>
+	<reaction id="ACON_IDH">
+		<reduct cfg="ABCDEF" id="cit"/>
+		<rproduct cfg="ABCEF" id="akg"/>
+		<rproduct cfg="D" id="CO2"/>
+	</reaction>
+	<reaction id="AKGD"> <!-- CHECK WHETHER A OR F IS LOST -->
+		<reduct cfg="ABCEF" id="akg"/>
+		<rproduct cfg="ABCE" id="succoa"/>
+		<rproduct cfg="F" id="CO2"/>
+	</reaction>
+	
+	<reaction id="PHGDH">
+		<reduct cfg="ABC" id="pg3"/>
+		<rproduct cfg="ABC" id="ser"/>
+	</reaction>
+	<reaction id="SHMT">
+		<reduct cfg="ABC" id="ser"/>
+		<rproduct cfg="AB" id="gly"/>
+		<rproduct cfg="C" id="mlthf"/>
+	</reaction>
+	<reaction id="GCSA">
+		<reduct cfg="AB" id="gly"/>
+		<rproduct cfg="B" id="mlp"/>
+		<rproduct cfg="A" id="CO2"/>
+	</reaction>
+	<reaction id="GCSB">
+		<reduct cfg="A" id="mlp"/>
+		<rproduct cfg="A" id="mlthf"/>
+	</reaction>
+
+	<reaction id="FDH_FTHL">
+		<reduct cfg="A" id="CO2"/>
+		<rproduct cfg="A" id="fthf"/>
+	</reaction>
+	<reaction id="MTHFC_MTHFD">
+		<reduct cfg="A" id="fthf"/>
+		<rproduct cfg="A" id="mlthf"/>
+	</reaction>
+	<reaction id="MTHFR"> <!-- CHECK REDOX MOLECULE NADH or H -->
+		<reduct cfg="A" id="mlthf"/>
+		<rproduct cfg="A" id="mthf"/>
+	</reaction>
+	<reaction id="MTRCFSP">
+		<reduct cfg="A" id="mthf"/>
+		<rproduct cfg="A" id="mcfesp"/>
+	</reaction>
+	<reaction id="CODH_ACS">
+		<reduct cfg="A" id="mcfesp"/>
+		<reduct cfg="B" id="CO2"/>
+		<rproduct cfg="BA" id="accoa"/>
+	</reaction>
+	
+	<reaction id="CO2_EX">
+		<reduct cfg="A" id="CO2"/>
+	</reaction>
+	<reaction id="OA_EX">
+		<reduct cfg="ABCD" id="oa"/>
+	</reaction>
+	<reaction id="AKG_EX">
+		<reduct cfg="ABCDE" id="akg"/>
+	</reaction>
+	<reaction id="PYR_EX">
+		<reduct cfg="ABC" id="pyr"/>
+	</reaction>
+	<reaction id="SUCCOA_EX">
+		<reduct cfg="ABCD" id="succoa"/>
+	</reaction>
+	<reaction id="SER_EX">
+		<reduct cfg="ABC" id="ser"/>
+	</reaction>
+	<reaction id="GLY_EX">
+		<reduct cfg="AB" id="gly"/>
+	</reaction>
+	<reaction id="ACCOA_EX">
+		<reduct cfg="BC" id="accoa"/>
+	</reaction>
+</reactionnetwork>
+</fluxml>
